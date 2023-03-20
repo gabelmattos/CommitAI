@@ -10,10 +10,6 @@ if [ "$EUID" -eq 0 ]; then
   exit 1
 fi
 
-# Download commitai.sh
-echo "Downloading commitai.sh..."
-curl -sSL https://raw.githubusercontent.com/<soon>/install/HEAD/commitai.sh -o commitai.sh
-
 # Ask the user for the OpenAI API Key
 echo "Please enter your OpenAI API Key:"
 read OPENAI_API_KEY
@@ -27,6 +23,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   if [ -w /usr/local/bin ]; then
     cp commitai.sh /usr/local/bin/commitai
     chmod +x /usr/local/bin/commitai
+    echo -e "${GREEN} Successfully installed commitai!"
   else
     echo -e "${YELLOW} Please execute the following commands:"
     echo -e "${GREEN} sudo cp commitai.sh /usr/local/bin/commitai"

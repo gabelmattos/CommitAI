@@ -15,7 +15,7 @@ CommitAI is a tool designed to generate concise and engaging commit messages for
 To install CommitAI, simply run the following command:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<soon>/install/HEAD/install.sh)"
+curl https://raw.githubusercontent.com/gabedemattos/CommitAI/main/commitai.sh -o commitai.sh && bash <(curl -s https://raw.githubusercontent.com/gabedemattos/CommitAI/main/install.sh)
 ```
 
 ## Usage
