@@ -49,7 +49,7 @@ commitai -s
 ### Generate a commit message using a custom prompt
 
 ```bash
-commitai -cm "Generate a commit message with a funny message"
+commitai -p "Generate a commit message with a funny message"
 ```
 
 ## Contributing
