@@ -206,5 +206,5 @@ while true; do
 done
 
 # Commit and push the changes
-echo "${NC}Committing and pushing the changes..."
+echo -e "${NC}Adding the commit message..."
 git commit -m "$COMMIT_MESSAGE" 
