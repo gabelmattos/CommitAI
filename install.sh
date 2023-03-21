@@ -3,6 +3,7 @@
 # Define color codes
 YELLOW='\033[1;33m'
 GREEN='\033[1;32m'
+LIGHT_GRAY='\033[0;37m'
 
 # Check if script requires sudo permissions
 if [ "$EUID" -eq 0 ]; then
@@ -11,8 +12,15 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 # Ask the user for the OpenAI API Key
-echo "Please enter your OpenAI API Key:"
+echo -e "Please enter your OpenAI API Key:"
+echo -e "${LIGHT_GRAY}You can find your API key at https://platform.openai.com/account/api-keys"
 read OPENAI_API_KEY
+
+# Check if the API key is valid
+if [ -z "$OPENAI_API_KEY" ]; then
+  echo "Error: API key is empty"
+  exit 1
+fi
 
 # Insert the API key into the second line of commitai.sh
 sed -i '' "2s/.*/OPENAI_API_KEY=$OPENAI_API_KEY/" commitai.sh

@@ -70,7 +70,7 @@ usage() {
   echo "Options:"
   echo "  -h, --help            Show this help message and exit"
   echo "  -s, --semantic        Semantic commit message includes a type identifier at the beginning of each modification"
-  echo "  -cm, --custom-prompt  Use a custom prompt provided by the user"
+  echo "  -p, --prompt Use a custom prompt provided by the user"
 }
 
 # Parse command-line arguments
@@ -138,10 +138,6 @@ refactor: refactoring production code \
 test: adding missing tests, refactoring tests \
 build: updating build configuration, development tools, etc."
 
-PROMPT_OLD="Please include a type identifier (fix, feat, or chore) at the\
- beginning of your commit message for the following diff, indicating\
- the nature of the changes being made in a short commit message: \n\n$DIFF\n\n"
-
 PROMPT="Generate commit message following format pattern for the following diff, \
  for comments, only mention that new commends are added, and indicate \
  the nature of each file change in a concise short commit message: \n\n$DIFF\n\n"
@@ -167,7 +163,6 @@ PAYLOAD=$(jq -n \
 # Submit the diff to OpenAI API and capture the output in COMMIT_MESSAGE variable
 COMMIT_MESSAGE=""
 while [ -z "$COMMIT_MESSAGE" ]; do
-  echo "Executing curl command..."
   (spinner $$) &
   spinner_pid=$!
   output=$(curl -s https://api.openai.com/v1/chat/completions \
@@ -189,7 +184,6 @@ done
 
 # Escape any double quotes in the commit message
 COMMIT_MESSAGE=$(echo "$COMMIT_MESSAGE" | sed -e 's/"/\\"/g')
-echo "Final COMMIT_MESSAGE: $COMMIT_MESSAGE"
 
 # Show the commit message and ask for confirmation
 while true; do

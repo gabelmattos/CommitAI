@@ -30,7 +30,7 @@ commitai [options]
 | ------ | ----------- |
 | `-h or --help` | Show help |
 | `-s or --semantic` | Generate a semantic commit message |
-| `-cm or --custom-message` | Use a custom prompt |
+| `-p or --prompt` | Use a custom prompt |
 
 ## Examples
 
