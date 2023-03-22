@@ -45,12 +45,26 @@ commitai
 ```bash
 commitai -s
 ```
+Example output:
+```bash
+feat(commitai.sh): Add capability to add commit message.
+```
 
 ### Generate a commit message using a custom prompt
 
 ```bash
-commitai -p "Generate a commit message with a funny message"
+commitai -p "Generate a funny and witty commit message for the following code changes: "
 ```
+Example output:
+```bash
+"Committing AI..because why not? 😜🤖"
+```
+
+## Future work
+
+- [ ] Add ability to customize existing prompts
+- [ ] Add ability to save custom prompts
+- [ ] Add GPT-4 optional support
 
 ## Contributing
 
